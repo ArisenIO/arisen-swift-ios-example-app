@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  EosioSwiftiOSExampleApp
+//  ArisenSwiftiOSExampleApp
 //
 //  Created by Serguei Vinnitskii on 3/28/19.
 //  Copyright (c) 2017-2019 block.one and its contributors. All rights reserved.

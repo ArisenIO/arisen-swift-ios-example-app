@@ -1,35 +1,35 @@
 //
 //  ViewController.swift
-//  EosioSwiftiOSExampleApp
+//  ArisenSwiftiOSExampleApp
 //
 //  Created by Brandon Fancher on 4/25/19.
 //  Copyright (c) 2017-2019 block.one and its contributors. All rights reserved.
 //
 
 import UIKit
-import EosioSwift
-import EosioSwiftAbieosSerializationProvider
-import EosioSwiftSoftkeySignatureProvider
+import ArisenSwift
+import ArisenSwiftAbirixSerializationProvider
+import ArisenSwiftSoftkeySignatureProvider
 
 // SUPPLY VALUES TO THESE VARIABLES TO RUN EXAMPLE APP
 
     let endpoint = URL(string: "https://supply-value")! // override with node endpoint URL
     let privateKeys = ["SUPPLY VALUE"]
-    let currencySymbol = "SYS" // override to the token of your choice (e.g., "EOS")
+    let currencySymbol = "RIX" // override to the token of your choice (e.g., "RIX")
     let permission = "active" // override if needed
 
     // Transfer action data variables
     let from = "SUPPLY VALUE"
     let to = "SUPPLY VALUE"
-    let quantity = "1.0000 SYS" // override if needed (e.g., "1.0000 EOS")
+    let quantity = "1.0000 RIX" // override if needed (e.g., "1.0000 RIX")
     let memo = "" // override if needed
 
 // END VARIABLE VALUES CONFIG SECTION
 
 /// Action data structure for transaction.
 struct TransferActionData: Codable {
-    var from: EosioName
-    var to: EosioName
+    var from: ArisenName
+    var to: ArisenName
     var quantity: String
     var memo: String = ""
 }
@@ -43,8 +43,8 @@ class ViewController: UIViewController {
 
     var variablesSupplied = true
 
-    var rpcProvider: EosioRpcProvider?
-    var transactionFactory: EosioTransactionFactory?
+    var rpcProvider: ArisenRpcProvider?
+    var transactionFactory: ArisenTransactionFactory?
 
     @IBOutlet weak var idLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
@@ -60,20 +60,20 @@ class ViewController: UIViewController {
         }
 
         // First, we set our providers.
-        rpcProvider = EosioRpcProvider(endpoint: endpoint)
+        rpcProvider = ArisenRpcProvider(endpoint: endpoint)
         guard let rpcProvider = rpcProvider else {
             print("ERROR: No RPC provider found.")
             return
         }
 
-        let serializationProvider = EosioAbieosSerializationProvider()
+        let serializationProvider = ArisenAbirixSerializationProvider()
 
-        // Note that the EosioSoftkeySignatureProvider is for testing purposes only; storing keys in memory is not secure.
-        // We recommend https://www.github.com/EOSIO/eosio-swift-vault-signature-provider for production apps.
-        let signatureProvider = try! EosioSoftkeySignatureProvider(privateKeys: privateKeys)
+        // Note that the ArisenSoftkeySignatureProvider is for testing purposes only; storing keys in memory is not secure.
+        // We recommend https://www.github.com/ARISENIO/arisen-swift-vault-signature-provider for production apps.
+        let signatureProvider = try! ArisenSoftkeySignatureProvider(privateKeys: privateKeys)
 
         // We then instantiate the transaction factory so that we can always get new, ready-to-use transactions with these providers pre-configured.
-        transactionFactory = EosioTransactionFactory(
+        transactionFactory = ArisenTransactionFactory(
             rpcProvider: rpcProvider,
             signatureProvider: signatureProvider,
             serializationProvider: serializationProvider
@@ -155,7 +155,7 @@ class ViewController: UIViewController {
         }
 
         // Set up the currency balance request.
-        let balanceRequest = EosioRpcCurrencyBalanceRequest(code: "eosio.token", account: from, symbol: currencySymbol)
+        let balanceRequest = ArisenRpcCurrencyBalanceRequest(code: "arisen.token", account: from, symbol: currencySymbol)
 
         // Pass it into our RPC Provider instance. Handle success and failure as appropriate.
         // Remember, you can also get promises back with: `rpcProvider.getCurrencyBalance(.promise, requestParameters: balanceRequest)`.
@@ -186,16 +186,16 @@ class ViewController: UIViewController {
         let transaction = transactionFactory.newTransaction()
 
         // Set up our transfer action.
-        let action = try! EosioTransaction.Action(
-            account: EosioName("eosio.token"),
-            name: EosioName("transfer"),
-            authorization: [EosioTransaction.Action.Authorization(
-                actor: EosioName(from),
-                permission: EosioName(permission)
+        let action = try! ArisenTransaction.Action(
+            account: ArisenName("arisen.token"),
+            name: ArisenName("transfer"),
+            authorization: [ArisenTransaction.Action.Authorization(
+                actor: ArisenName(from),
+                permission: ArisenName(permission)
             )],
             data: TransferActionData(
-                from: EosioName(from),
-                to: EosioName(to),
+                from: ArisenName(from),
+                to: ArisenName(to),
                 quantity: quantity,
                 memo: memo
             )

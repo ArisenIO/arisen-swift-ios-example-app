@@ -1,6 +1,6 @@
 language: swift
-xcode_workspace: EosioSwiftiOSExampleApp.xcworkspace
-xcode_scheme: EosioSwiftiOSExampleApp
+xcode_workspace: ArisenSwiftiOSExampleApp.xcworkspace
+xcode_scheme: ArisenSwiftiOSExampleApp
 osx_image: xcode10.2
 xcode_destination: platform=iOS Simulator,OS=12.0,name=iPhone X
 before_install:
@@ -9,5 +9,5 @@ before_install:
 - pod install
 script:
 - set -o pipefail 
-- xcodebuild -workspace EosioSwiftiOSExampleApp.xcworkspace -scheme EosioSwiftiOSExampleApp -destination platform\=iOS\ Simulator,OS\=12.0,name\=iPhone\ X build | xcpretty
+- xcodebuild -workspace ArisenSwiftiOSExampleApp.xcworkspace -scheme ArisenSwiftiOSExampleApp -destination platform\=iOS\ Simulator,OS\=12.0,name\=iPhone\ X build | xcpretty
 

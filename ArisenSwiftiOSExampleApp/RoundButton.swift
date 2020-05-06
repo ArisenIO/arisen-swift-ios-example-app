@@ -1,6 +1,6 @@
 //
 //  RoundButton.swift
-//  EosioSwiftiOSExampleApp
+//  ArisenSwiftiOSExampleApp
 //
 //  Created by Farid Rahmani on 3/29/19.
 //  Copyright (c) 2017-2019 block.one and its contributors. All rights reserved.

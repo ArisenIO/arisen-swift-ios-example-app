@@ -5,17 +5,17 @@ platform :ios, '12.0'
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
-target 'EosioSwiftiOSExampleApp' do
+target 'ArisenSwiftiOSExampleApp' do
   use_frameworks!
 
   if using_local_pods
-    pod 'EosioSwift', :path => '../eosio-swift'
-    pod 'EosioSwiftAbieosSerializationProvider', :path => '../eosio-swift-abieos-serialization-provider'
-    pod 'EosioSwiftSoftkeySignatureProvider', :path => '../eosio-swift-softkey-signature-provider'
-    pod 'EosioSwiftEcc', :path => '../eosio-swift-ecc'
+    pod 'ArisenSwift', :path => '../arisen-swift'
+    pod 'ArisenSwiftAbirixSerializationProvider', :path => '../arisen-swift-abirix-serialization-provider'
+    pod 'ArisenSwiftSoftkeySignatureProvider', :path => '../arisen-swift-softkey-signature-provider'
+    pod 'ArisenSwiftEcc', :path => '../arisen-swift-ecc'
   else
-    pod 'EosioSwift', '~> 0.2.0'
-    pod 'EosioSwiftAbieosSerializationProvider', '~> 0.2.0'
-    pod 'EosioSwiftSoftkeySignatureProvider', '~> 0.2.0'
+    pod 'ArisenSwift', '~> 0.2.0'
+    pod 'ArisenSwiftAbirixSerializationProvider', '~> 0.2.0'
+    pod 'ArisenSwiftSoftkeySignatureProvider', '~> 0.2.0'
   end
 end

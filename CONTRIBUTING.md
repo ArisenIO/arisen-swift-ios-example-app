@@ -1,4 +1,4 @@
-# Contributing to EOSIO SDK for Swift: iOS Example App
+# Contributing to Arisen SDK for Swift: iOS Example App
 
 Interested in contributing? That's awesome! Here are some guidelines to get started quickly and easily:
 
